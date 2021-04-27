@@ -1,0 +1,53 @@
+[
+   {
+      "id":1,
+      "Name":"COMPUTER SCIENCE FUNDAMENTALS II",
+      "Code":"CS1027",
+      "Description":"First year cs course",
+      "Credit":0.5,
+      "Antirequisites":[
+      ],
+      "Prerequisites":[
+         
+      ]
+   },
+   {
+      "id":2,
+      "Name":"COMPUTER SCIENCE FUNDAMENTALS III",
+      "Code":"CS2214",
+      "Description":"Second Year CS Course",
+      "Credit":0.5,
+      "Antirequisites":[
+         
+      ],
+      "Prerequisites":[
+         
+      ]
+   },
+   {
+      "id":3,
+      "Name":"Random Course with Long Name",
+      "Code":"CS1000",
+      "Description":"Random Course testing",
+      "Credit":0.5,
+      "Antirequisites":[
+         "CS2214"
+      ],
+      "Prerequisites":[
+         
+      ]
+   },
+   {
+      "id":4,
+      "Name":"ORIGIN AND GEOLOGY OF THE SOLAR SYSTEM",
+      "Code":"ES1086",
+      "Description":"This is a really boring course",
+      "Credit":1.0,
+      "Antirequisites":[
+         "CS1000"
+      ],
+      "Prerequisites":[
+         
+      ]
+   }
+]

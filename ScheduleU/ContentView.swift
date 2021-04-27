@@ -7,29 +7,10 @@
 
 import SwiftUI
 
-struct Item : Identifiable {
-    let id = UUID()
-    let title : String
-    let color : Color
-    let image : String
-    
-    static func getItems() -> [Item] {
-        (0...7).map {
-            Item(title: "Item \($0)", color: [Color.blue].randomElement()!, image: "science")
-        }
-    }
-}
-
-//class Content : Identifiable, ObservableObject {
-//    @Published var contentArray = [1,2,3,4,5,6,7]
-//}
-
-
 struct ContentView: View {
     
-    //@ObservedObject var contentarr = Content()
+    let courseArray : [Course] = Bundle.main.decode("Courses.json")
     @State var isTrue = false
-    private let items = Item.getItems()
     
     let columns = [
         GridItem(.flexible()),
@@ -60,7 +41,7 @@ struct ContentView: View {
                     
                     ScrollView(showsIndicators: false){
                         LazyVGrid(columns: columns, spacing: 15){
-                            ForEach(items){ item in
+                            ForEach(courseArray){ item in
                                 NavigationLink(destination: NewView()){
                                     ZStack{
                                         RoundedRectangle(cornerRadius: 10)
@@ -70,21 +51,22 @@ struct ContentView: View {
                                             .padding(.leading, 12)
                                             .padding(.trailing, 12)
                                             .shadow(color: .black, radius: 6, x: 5, y: 5)
-
                             
                                         
                                         HStack {
                                             VStack(alignment: .leading) {
-                                                Text(item.title)
-                                                    .font(.system(size: 24, weight: .bold, design: .rounded))
+                                                Text(item.Name)
+                                                    .font(.system(size: 20, weight: .bold, design: .rounded))
                                                     .foregroundColor(.white)
                                                 
-                                                
-                                                Text(item.title)
-                                                    .font(.system(size: 16, weight: .light, design: .rounded))
+                                                Text("\(item.Credit)")
+                                                    .font(.system(size: 15, weight: .light, design: .rounded))
                                                     .foregroundColor(.white)
-                                                    .opacity(0.6)
-                                            }
+                                                    .opacity(0.8)
+                                        
+                                    
+                                            }.padding(.trailing, 16)
+                                            .padding(.bottom, 30)
                                             Spacer()
                                         }.padding(.leading, 28)
 

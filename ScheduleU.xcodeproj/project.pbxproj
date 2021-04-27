@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4777DE8426378E560066C3F4 /* Catalogue.JSON in Resources */ = {isa = PBXBuildFile; fileRef = 4777DE8226378E560066C3F4 /* Catalogue.JSON */; };
+		4777DE8926378F820066C3F4 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4777DE8826378F820066C3F4 /* Bundle-Decodable.swift */; };
+		4777DE9326378FE50066C3F4 /* Catalogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4777DE9226378FE50066C3F4 /* Catalogue.swift */; };
+		4777DE982637918C0066C3F4 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4777DE972637918C0066C3F4 /* Course.swift */; };
+		4777DEA3263795680066C3F4 /* Courses.json in Resources */ = {isa = PBXBuildFile; fileRef = 4777DEA2263795680066C3F4 /* Courses.json */; };
 		47CDE78F26378AB200141B66 /* ScheduleUApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CDE78E26378AB200141B66 /* ScheduleUApp.swift */; };
 		47CDE79126378AB200141B66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CDE79026378AB200141B66 /* ContentView.swift */; };
 		47CDE79326378AB500141B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47CDE79226378AB500141B66 /* Assets.xcassets */; };
@@ -34,6 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4777DE8226378E560066C3F4 /* Catalogue.JSON */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Catalogue.JSON; sourceTree = "<group>"; };
+		4777DE8826378F820066C3F4 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		4777DE9226378FE50066C3F4 /* Catalogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalogue.swift; sourceTree = "<group>"; };
+		4777DE972637918C0066C3F4 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		4777DEA2263795680066C3F4 /* Courses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Courses.json; sourceTree = "<group>"; };
 		47CDE78B26378AB200141B66 /* ScheduleU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScheduleU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47CDE78E26378AB200141B66 /* ScheduleUApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleUApp.swift; sourceTree = "<group>"; };
 		47CDE79026378AB200141B66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,7 +108,12 @@
 			isa = PBXGroup;
 			children = (
 				47CDE78E26378AB200141B66 /* ScheduleUApp.swift */,
+				4777DE8826378F820066C3F4 /* Bundle-Decodable.swift */,
 				47CDE79026378AB200141B66 /* ContentView.swift */,
+				4777DE972637918C0066C3F4 /* Course.swift */,
+				4777DE9226378FE50066C3F4 /* Catalogue.swift */,
+				4777DE8226378E560066C3F4 /* Catalogue.JSON */,
+				4777DEA2263795680066C3F4 /* Courses.json */,
 				47CDE7BC26378B2700141B66 /* NewView.swift */,
 				47CDE79226378AB500141B66 /* Assets.xcassets */,
 				47CDE79726378AB500141B66 /* Info.plist */,
@@ -236,8 +251,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4777DEA3263795680066C3F4 /* Courses.json in Resources */,
 				47CDE79626378AB500141B66 /* Preview Assets.xcassets in Resources */,
 				47CDE79326378AB500141B66 /* Assets.xcassets in Resources */,
+				4777DE8426378E560066C3F4 /* Catalogue.JSON in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +279,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4777DE982637918C0066C3F4 /* Course.swift in Sources */,
 				47CDE7BD26378B2700141B66 /* NewView.swift in Sources */,
 				47CDE79126378AB200141B66 /* ContentView.swift in Sources */,
 				47CDE78F26378AB200141B66 /* ScheduleUApp.swift in Sources */,
+				4777DE8926378F820066C3F4 /* Bundle-Decodable.swift in Sources */,
+				4777DE9326378FE50066C3F4 /* Catalogue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
