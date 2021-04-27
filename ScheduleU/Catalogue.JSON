@@ -1,0 +1,10 @@
+[
+	{
+		"Department": "Department of Science",
+      	"MajorSpecMin" : "Major",
+      	"Degree": "Computer Science",
+		"TotalCreditCount": 6.0,
+      	"RequiredCourses": ["CS2214", "CS1000", "CS1027"],
+      	"RequiredCourseDescription" : "You need 3.0 Courses in \n CS2214"
+	}
+  ]
