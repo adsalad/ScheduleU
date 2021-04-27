@@ -40,37 +40,37 @@ struct ContentView: View {
                     .offset(y: -15)
                     
                     ScrollView(showsIndicators: false){
-                        LazyVGrid(columns: columns, spacing: 15){
+                        LazyVGrid(columns: columns, spacing: 20){
                             ForEach(courseArray){ item in
                                 NavigationLink(destination: NewView()){
-                                    ZStack{
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .frame(height: 120)
-                                            .foregroundColor(Color.blue)
-                                            .padding(.top, 8)
-                                            .padding(.leading, 12)
-                                            .padding(.trailing, 12)
-                                            .shadow(color: .black, radius: 6, x: 5, y: 5)
-                            
-                                        
                                         HStack {
                                             VStack(alignment: .leading) {
                                                 Text(item.Name)
                                                     .font(.system(size: 20, weight: .bold, design: .rounded))
                                                     .foregroundColor(.white)
-                                                
-                                                Text("\(item.Credit)")
-                                                    .font(.system(size: 15, weight: .light, design: .rounded))
+                                                    
+                                            }
+                                            
+                                            Spacer()
+                                            
+                                            VStack {
+                                                Text("\(item.Credit, specifier: "%.1f")")
+                                                    .font(.system(size: 22, weight: .light, design: .rounded))
                                                     .foregroundColor(.white)
                                                     .opacity(0.8)
-                                        
+                                                Spacer()
+                                            }
                                     
-                                            }.padding(.trailing, 16)
-                                            .padding(.bottom, 30)
-                                            Spacer()
-                                        }.padding(.leading, 28)
+                                        }
+                                        .padding()
 
-                                    }
+                                        .frame(width: UIScreen.main.bounds.size.width - 20, height: 120)
+                                        .background(Color.blue)
+                                        .cornerRadius(20)
+                                        .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0.0, y: 7.5)
+
+
+                                    
                                 }.buttonStyle(PlainButtonStyle())
                             }
                         }
@@ -86,6 +86,11 @@ struct ContentView: View {
     }
 }
 
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
 
 struct AddButton: View {
     
