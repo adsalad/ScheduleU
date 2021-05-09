@@ -46,16 +46,18 @@ struct ContentView: View {
                                         HStack {
                                             VStack(alignment: .leading) {
                                                 Text(item.Name)
+                                                    .lineLimit(2)
                                                     .font(.system(size: 20, weight: .bold, design: .rounded))
                                                     .foregroundColor(.white)
                                                     
                                             }
+                                            //.frame(width: 280)
                                             
                                             Spacer()
                                             
                                             VStack {
                                                 Text("\(item.Credit, specifier: "%.1f")")
-                                                    .font(.system(size: 22, weight: .light, design: .rounded))
+                                                    .font(.system(size: 24, weight: .light, design: .rounded))
                                                     .foregroundColor(.white)
                                                     .opacity(0.8)
                                                 Spacer()
@@ -67,7 +69,7 @@ struct ContentView: View {
                                         .frame(width: UIScreen.main.bounds.size.width - 20, height: 120)
                                         .background(Color.blue)
                                         .cornerRadius(20)
-                                        .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0.0, y: 7.5)
+                                        .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0.0, y: 6)
 
 
                                     
