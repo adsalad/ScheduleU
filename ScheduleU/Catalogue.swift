@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct Catalogue : Codable {
+    var Department : String 
+    var MajorSpecMin : String
+    var Degree : String
+    var TotalCreditCount : Double
+    var RequiredCourses: [String]
+    var RequiredCourseDescription : String
+}

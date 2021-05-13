@@ -10,6 +10,9 @@ import SwiftUI
 struct ContentView: View {
     
     let courseArray : [Course] = Bundle.main.decode("Courses.json")
+    let catalogueArray : [Catalogue] = Bundle.main.decode("Catalogue.json")
+    
+    
     @State var isTrue = false
     
     let columns = [
@@ -42,10 +45,10 @@ struct ContentView: View {
                     ScrollView(showsIndicators: false){
                         LazyVGrid(columns: columns, spacing: 20){
                             ForEach(courseArray){ item in
-                                NavigationLink(destination: NewView()){
+                                //NavigationLink(destination: NewView()){
                                         HStack {
                                             VStack(alignment: .leading) {
-                                                Text(item.Name)
+                                                Text("\(item.Code): \(item.Name)")
                                                     .lineLimit(2)
                                                     .font(.system(size: 20, weight: .bold, design: .rounded))
                                                     .foregroundColor(.white)
@@ -57,7 +60,7 @@ struct ContentView: View {
                                             
                                             VStack {
                                                 Text("\(item.Credit, specifier: "%.1f")")
-                                                    .font(.system(size: 24, weight: .light, design: .rounded))
+                                                    .font(.system(size: 27, weight: .light, design: .rounded))
                                                     .foregroundColor(.white)
                                                     .opacity(0.8)
                                                 Spacer()
@@ -73,7 +76,7 @@ struct ContentView: View {
 
 
                                     
-                                }.buttonStyle(PlainButtonStyle())
+                                //}.buttonStyle(PlainButtonStyle())
                             }
                         }
                         .navigationBarItems(leading: AddButton(isTrue: $isTrue))
