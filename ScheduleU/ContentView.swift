@@ -25,32 +25,24 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 
-                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.9491309524, green: 0.9492898583, blue: 0.9491100907, alpha: 1)), Color(#colorLiteral(red: 0.835678637, green: 0.8395468593, blue: 0.8489992619, alpha: 1))]), startPoint: .top, endPoint: .bottom)
+                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.977660954, green: 0.9901345372, blue: 0.9897318482, alpha: 1)), Color(#colorLiteral(red: 0.8521606326, green: 0.8600239158, blue: 0.8797453642, alpha: 1))]), startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea()
                     //.blur(radius: 8.0)
                 
                 VStack(alignment: .leading) {
                     
-                    
-                    Group{
-                        Text("Computer Science")
-                        Text("5.0/6.0 Credits")
-                        
-                    }
-                    .font(.system(size: 24, weight: .bold, design: .rounded))
-                    .foregroundColor(.black)
-                    .padding(.leading, 16)
-                    .offset(y: -15)
+                   
                     
                     ScrollView(showsIndicators: false){
-                        LazyVGrid(columns: columns, spacing: 20){
+                        LazyVGrid(columns: columns, spacing: 21){
                             ForEach(courseArray){ item in
                                 //NavigationLink(destination: NewView()){
                                         HStack {
                                             VStack(alignment: .leading) {
-                                                Text("\(item.Code): \(item.Name)")
+                                                Text("\(item.Code)")
                                                     .lineLimit(2)
-                                                    .font(.system(size: 20, weight: .bold, design: .rounded))
+                                                    .font(.system(size: 40, weight: .bold, design: .rounded))
+                                                    .opacity(0.9)
                                                     .foregroundColor(.white)
                                                     
                                             }
@@ -60,7 +52,7 @@ struct ContentView: View {
                                             
                                             VStack {
                                                 Text("\(item.Credit, specifier: "%.1f")")
-                                                    .font(.system(size: 27, weight: .light, design: .rounded))
+                                                    .font(.system(size: 26, weight: .light, design: .rounded))
                                                     .foregroundColor(.white)
                                                     .opacity(0.8)
                                                 Spacer()
@@ -70,9 +62,9 @@ struct ContentView: View {
                                         .padding()
 
                                         .frame(width: UIScreen.main.bounds.size.width - 20, height: 120)
-                                        .background(Color.blue)
+                                        .background(Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)))
                                         .cornerRadius(20)
-                                        .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0.0, y: 6)
+                                        .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0.0, y: 10)
 
 
                                     
@@ -102,11 +94,11 @@ struct AddButton: View {
     @Binding var isTrue : Bool
     var body: some View {
         Button(action: {self.isTrue = true}) {
-            Image(systemName: "plus.app")
-                .foregroundColor(.white)
+            Image(systemName: "plus.magnifyingglass")
+                .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
         }
         .frame(width: 32, height: 32)
         .background(Color.orange)
-        .cornerRadius(5)
+        .cornerRadius(22)
     }
 }

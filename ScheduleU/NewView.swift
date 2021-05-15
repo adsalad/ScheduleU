@@ -7,14 +7,65 @@
 
 import SwiftUI
 
-struct NewView: View {
+struct DetailView: View {
+    var courseSpecific: Course
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("\(courseSpecific.Name)")
     }
 }
 
-struct NewView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewView()
+struct NewView: View {
+    @State private var searchData = ""
+    let courseArray : [Course] = Bundle.main.decode("Courses.json")
+ 
+    
+    var body: some View {
+        VStack {
+                        
+            SearchBar(text: $searchData)
+                .padding([.leading, .trailing], 12)
+                .padding(.top, 14)
+            
+            
+            List(courseArray.filter({ searchData.isEmpty ? true : $0.Code.contains(searchData.uppercased()) || $0.Name.contains(searchData.uppercased())
+            })) { item in
+                Text(item.Name).font(.system(.subheadline, design: .rounded))
+            }
+        }
+    }
+    
+    struct SearchBar: View {
+        @Binding var text: String
+        
+        var body: some View {
+            HStack{
+                Image(systemName: "magnifyingglass").foregroundColor(.black)
+                TextField("Search", text: $text)
+                Spacer(minLength: 0)
+                if !text.isEmpty {
+                    Button(action: {
+                        self.text = ""
+                    }) {
+                        Image(systemName: "xmark")
+                            .resizable()
+                            .foregroundColor(Color(UIColor.systemGray6))
+                            .frame(width: 8, height: 8)
+                            .background(Circle().foregroundColor(Color(UIColor.systemGray6)))
+                            .frame(width: 16, height: 16)
+                    }
+                }
+                
+            }.padding(8)
+            .padding([.leading, .trailing], 6)
+            .background(RoundedRectangle(cornerRadius: 30).foregroundColor(Color(UIColor.systemGray6)))
+            .frame(maxWidth: .infinity)
+        }
+    }
+    
+    struct NewView_Previews: PreviewProvider {
+        static var previews: some View {
+            NewView()
+        }
     }
 }
