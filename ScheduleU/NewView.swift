@@ -17,8 +17,8 @@ struct DetailView: View {
 
 struct NewView: View {
     @State private var searchData = ""
-    let courseArray : [Course] = Bundle.main.decode("Courses.json")
- 
+    let courseArray = CourseArrayStruct.array
+
     
     var body: some View {
         VStack {

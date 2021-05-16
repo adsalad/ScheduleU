@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let courseArray : [Course] = Bundle.main.decode("Courses.json")
+    let courseArray = CourseArrayStruct.array
     let catalogueArray : [Catalogue] = Bundle.main.decode("Catalogue.json")
     
     
@@ -30,7 +30,7 @@ struct ContentView: View {
                     //.blur(radius: 8.0)
                 
                 VStack(alignment: .leading) {
-                    
+                                        
                    
                     
                     ScrollView(showsIndicators: false){
@@ -76,9 +76,11 @@ struct ContentView: View {
                     
                 }
             }
+            
         }.sheet(isPresented: $isTrue, content: {
             NewView()
         })
+        
         
     }
 }

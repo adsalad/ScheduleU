@@ -18,3 +18,8 @@ struct Course : Codable, Identifiable {
     var AntiRequisites : [String]?
     var PreRequisites : [String]?
 };
+
+struct CourseArrayStruct {
+    static var array : [Course] = Bundle.main.decode("Courses.json")
+
+}
