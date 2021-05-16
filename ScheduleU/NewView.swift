@@ -30,7 +30,9 @@ struct NewView: View {
             
             List(courseArray.filter({ searchData.isEmpty ? true : $0.Code.contains(searchData.uppercased()) || $0.Name.contains(searchData.uppercased())
             })) { item in
-                Text(item.Name).font(.system(.subheadline, design: .rounded))
+                LazyVStack (alignment: .leading) {
+                    Text(item.Name).font(.system(.subheadline, design: .rounded))
+                }
             }
         }
     }
