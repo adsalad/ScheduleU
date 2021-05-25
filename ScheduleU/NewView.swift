@@ -18,22 +18,26 @@ struct DetailView: View {
 struct NewView: View {
     @State private var searchData = ""
     let courseArray = CourseArrayStruct.array
-
+    
     
     var body: some View {
-        VStack {
-                        
-            SearchBar(text: $searchData)
-                .padding([.leading, .trailing], 12)
-                .padding(.top, 14)
-            
-            
-            List(courseArray.filter({ searchData.isEmpty ? true : $0.Code.contains(searchData.uppercased()) || $0.Name.contains(searchData.uppercased())
-            })) { item in
-                LazyVStack (alignment: .leading) {
-                    Text(item.Name).font(.system(.subheadline, design: .rounded))
-                }
-            }
+        
+        NavigationView{
+            VStack {
+                SearchBar(text: $searchData)
+                    .padding([.leading, .trailing], 12)
+                    .padding(.top, 14)
+                List(courseArray.filter({ searchData.isEmpty ? true : $0.Code.contains(searchData.uppercased()) || $0.Name.contains(searchData.uppercased())
+                })) {
+                    item in
+                    NavigationLink(destination: InfoView(course: item)){
+                        LazyVStack (alignment: .leading) {
+                            Text(item.Name).font(.system(.subheadline, design: .rounded))
+                        }
+                    }
+                }.listStyle(PlainListStyle())
+            }.navigationBarTitle("Search Courses")
+            //.navigationBarHidden(true)
         }
     }
     
