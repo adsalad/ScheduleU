@@ -19,7 +19,6 @@ struct ContentView: View {
         
     ]
     
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -29,8 +28,6 @@ struct ContentView: View {
                 //.blur(radius: 8.0)
                 
                 VStack(alignment: .leading) {
-                    
-                    
                     
                     ScrollView(showsIndicators: false){
                         LazyVGrid(columns: columns, spacing: 21){
