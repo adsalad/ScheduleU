@@ -17,9 +17,9 @@ struct DetailView: View {
 
 struct NewView: View {
     @State private var searchData = ""
-    let courseArray = CourseArrayStruct.array
-    
-    
+    @ObservedObject var courseArray : CourseArray
+    @ObservedObject var worksheetArray : WorksheetArray
+
     var body: some View {
         
         NavigationView{
@@ -27,10 +27,10 @@ struct NewView: View {
                 SearchBar(text: $searchData)
                     .padding([.leading, .trailing], 12)
                     .padding(.top, 14)
-                List(courseArray.filter({ searchData.isEmpty ? true : $0.Code.contains(searchData.uppercased()) || $0.Name.contains(searchData.uppercased())
+                List(courseArray.array.filter({ searchData.isEmpty ? true : $0.Code.contains(searchData.uppercased()) || $0.Name.contains(searchData.uppercased())
                 })) {
                     item in
-                    NavigationLink(destination: InfoView(course: item)){
+                    NavigationLink(destination: InfoView(course: item, courseArray: courseArray, worksheetArray: worksheetArray)){
                         LazyVStack (alignment: .leading) {
                             Text(item.Name).font(.system(.subheadline, design: .rounded))
                         }
@@ -69,9 +69,9 @@ struct NewView: View {
         }
     }
     
-    struct NewView_Previews: PreviewProvider {
-        static var previews: some View {
-            NewView()
-        }
-    }
+//    struct NewView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            NewView(courseArray: CourseArrayStruct.array)
+//        }
+//    }
 }

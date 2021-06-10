@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let courseArray = CourseArrayStruct.array
+    @ObservedObject var courseArray = CourseArray()
+    @ObservedObject var worksheetArray = WorksheetArray()
     let catalogueArray : [Catalogue] = Bundle.main.decode("Catalogue.json")
     @Binding var showProfile : Bool
     @State var isTrue = false
     
     let columns = [
         GridItem(.flexible()),
-        
     ]
     
     var body: some View {
@@ -31,7 +31,7 @@ struct ContentView: View {
                     
                     ScrollView(showsIndicators: false){
                         LazyVGrid(columns: columns, spacing: 21){
-                            ForEach(courseArray){ item in
+                            ForEach(worksheetArray.array){ item in
                                 //NavigationLink(destination: NewView()){
                                 HStack {
                                     VStack(alignment: .leading) {
@@ -71,7 +71,7 @@ struct ContentView: View {
                 }
             }
         }.sheet(isPresented: $isTrue, content: {
-            NewView()
+            NewView(courseArray: self.courseArray, worksheetArray: self.worksheetArray)
         })
     }
 }

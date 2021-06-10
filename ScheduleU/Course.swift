@@ -19,7 +19,10 @@ struct Course : Codable, Identifiable {
     var PreRequisites : [String]?
 };
 
-struct CourseArrayStruct {
-    static var array : [Course] = Bundle.main.decode("Courses.json")
+class CourseArray : ObservableObject {
+    @Published var array : [Course] = Bundle.main.decode("Courses.json")
+}
 
+class WorksheetArray : ObservableObject {
+    @Published var array : [Course] = []
 }
