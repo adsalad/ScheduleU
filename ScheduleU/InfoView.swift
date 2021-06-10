@@ -10,14 +10,23 @@ import SwiftUI
 struct InfoView: View {
     
     let course: Course
+    @ObservedObject var courseArray : CourseArray
+    @ObservedObject var worksheetArray : WorksheetArray
     
     var body: some View {
-        Text("\(course.Name)")
+        VStack {
+            Button(action: {
+                worksheetArray.array.append(Course(id: 0, Name: "HAHA", Code: "LOL", Description: "LOL1", Credit: 3.0, AntiRequisites: [], PreRequisites: []))
+            }) {
+                Text("Add")
+            }
+            Text("\(course.Name)")
+        }
     }
 }
 
-struct InfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        InfoView(course: CourseArrayStruct.array[0])
-    }
-}
+//struct InfoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InfoView(course: CourseArrayStruct.array[0])
+//    }
+//}
