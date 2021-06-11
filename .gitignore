@@ -32,5 +32,6 @@ xcuserdata/
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
-
+ScheduleU.xcodeproj/project.xcworkspace/xcuserdata/adams.xcuserdatad/UserInterfaceState.xcuserstate
+.DS_Store
 # End of https://www.gitignore.io/api/xcode
