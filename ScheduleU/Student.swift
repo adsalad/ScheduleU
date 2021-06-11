@@ -10,12 +10,12 @@ import Foundation
 struct Student : Identifiable {
     var id : Int
     var StudentName : String
-    var Primary : Catalogue //mke minor
+    var Primary : Catalogue 
     var Secondary: Catalogue
-    var CurrentCourses : [Course]
+    var allRequired : [Course]
     
     mutating func addTask(course: Course){
-        CurrentCourses.append(course)
+        allRequired.append(course)
     }
     
 }

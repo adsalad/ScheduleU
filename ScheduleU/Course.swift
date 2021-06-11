@@ -20,9 +20,37 @@ struct Course : Codable, Identifiable {
 };
 
 class CourseArray : ObservableObject {
+    init () {
+//        var studentArray : [Student] = []
+//
+//        let catalogueOne = Catalogue(Department: "Department of Science", MajorSpecMin: "Major", Degree: "CS", TotalCreditCount: 6.0, RequiredCourses: ["CS2214", "CS1027", "CS1000"], RequiredCourseDescription: "You need 3.0 courses in")
+//        let catalogueTwo = Catalogue(Department: "Department of History", MajorSpecMin: "Minor", Degree: "World History", TotalCreditCount: 2.0, RequiredCourses: ["HIST1023", "HIST9012", "PHIL1000"], RequiredCourseDescription: "You need 2.0 courses in")
+//        let studentOne = Student(id: 251035776, StudentName: "Adam Salaymeh", Primary: catalogueOne, Secondary: catalogueTwo, allRequired: [])
+//        studentArray.append(studentOne)
+//
+//        let index1 : Int = studentArray.firstIndex(where: {$0.id == 251035776})!
+//
+//        for item in studentArray[index1].Primary.RequiredCourses {
+//            let name = item
+//            print(studentArray[index1].Primary.RequiredCourses)
+//            print(array)
+//            let index = array.firstIndex(where: {$0.Name == name})!
+//            studentArray[index1].addTask(course: array[index])
+//        }
+
+        
+        print(studentArray[index1].allRequired)
+
+    }
     @Published var array : [Course] = Bundle.main.decode("Courses.json")
+    
+   
+
+    
 }
 
 class WorksheetArray : ObservableObject {
     @Published var array : [Course] = []
 }
+
+

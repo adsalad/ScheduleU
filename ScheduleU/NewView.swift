@@ -19,6 +19,8 @@ struct NewView: View {
     @State private var searchData = ""
     @ObservedObject var courseArray : CourseArray
     @ObservedObject var worksheetArray : WorksheetArray
+    @Environment(\.presentationMode) var dismissSheet
+
 
     var body: some View {
         
@@ -38,6 +40,9 @@ struct NewView: View {
                 }.listStyle(PlainListStyle())
             }.navigationBarTitle("Search Courses")
             //.navigationBarHidden(true)
+            .navigationBarItems(trailing: Button(action: {dismissSheet.wrappedValue.dismiss()}, label: {
+                Text("Exit")
+            }))
         }
     }
     

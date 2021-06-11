@@ -10,13 +10,16 @@ import SwiftUI
 struct InfoView: View {
     
     let course: Course
+    //@Environment(\.presentationMode) var dismissSheet
     @ObservedObject var courseArray : CourseArray
     @ObservedObject var worksheetArray : WorksheetArray
     
     var body: some View {
         VStack {
             Button(action: {
-                worksheetArray.array.append(Course(id: 0, Name: "HAHA", Code: "LOL", Description: "LOL1", Credit: 3.0, AntiRequisites: [], PreRequisites: []))
+                //dismissSheet.wrappedValue.dismiss()
+                worksheetArray.array.append(Course(id: 0, Name: "HAHA", Code: "LOL", Description: "LOL1", Credit: 3.0, AntiRequisites: [], PreRequisites: [])
+                )
             }) {
                 Text("Add")
             }
@@ -25,8 +28,4 @@ struct InfoView: View {
     }
 }
 
-//struct InfoView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InfoView(course: CourseArrayStruct.array[0])
-//    }
-//}
+

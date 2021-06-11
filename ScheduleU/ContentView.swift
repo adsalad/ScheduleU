@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+     
+    
     
     @ObservedObject var courseArray = CourseArray()
     @ObservedObject var worksheetArray = WorksheetArray()
@@ -16,7 +18,7 @@ struct ContentView: View {
     @State var isTrue = false
     
     let columns = [
-        GridItem(.flexible()),
+        GridItem(.flexible())
     ]
     
     var body: some View {
@@ -76,11 +78,11 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(showProfile: .constant(false))
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(showProfile: .constant(false))
+//    }
+//}
 
 struct AddButton: View {
     
