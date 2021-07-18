@@ -7,13 +7,7 @@
 
 import SwiftUI
 
-struct DetailView: View {
-    var courseSpecific: Course
-    
-    var body: some View {
-        Text("\(courseSpecific.Name)")
-    }
-}
+
 
 struct NewView: View {
     @State private var searchData = ""
