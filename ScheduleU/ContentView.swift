@@ -25,7 +25,11 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 
-                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.977660954, green: 0.9901345372, blue: 0.9897318482, alpha: 1)), Color(#colorLiteral(red: 0.8521606326, green: 0.8600239158, blue: 0.8797453642, alpha: 1))]), startPoint: .top, endPoint: .bottom)
+                LinearGradient(
+                  gradient: Gradient(colors: [.white, Color(#colorLiteral(red: 0.7725490196, green: 0.7960784314, blue: 0.831372549, alpha: 1))]),
+                  startPoint: UnitPoint(x: 0.2, y: 0.2),
+                  endPoint: .bottomTrailing
+                )
                     .ignoresSafeArea()
                 //.blur(radius: 8.0)
                 

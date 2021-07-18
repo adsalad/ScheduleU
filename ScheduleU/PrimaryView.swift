@@ -9,72 +9,116 @@ import SwiftUI
 import CoreMotion
 
 
-extension Color {
-    static let lightShadow = Color(#colorLiteral(red: 0.3435087204, green: 0.3425679505, blue: 0.756269455, alpha: 1))
-    static let darkShadow = Color(#colorLiteral(red: 0.2509803922, green: 0.04705882353, blue: 0.6862745098, alpha: 1))
-    static let background = Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1))
-    static let neumorphictextColor = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
-}
 
 struct PrimaryView: View {
+    @State private var isExpanded = false
+    
+    
     @State var StudentName = ""
     @State var StudentID = ""
     
+    
     var body: some View {
         ZStack {
-            Color.background.ignoresSafeArea()
             
-            VStack(spacing: 34.0) {
+            LinearGradient(
+                gradient: Gradient(colors: [.white, Color(#colorLiteral(red: 0.8235294118, green: 0.8549019608, blue: 0.8980392157, alpha: 1))]),
+                startPoint: UnitPoint(x: 0.2, y: 0.2),
+                endPoint: .bottomTrailing
+            ).ignoresSafeArea()
+            
+            VStack(spacing: 10) { //
                 
-                VStack(alignment: .leading, spacing: 14.0) {
-                    Text("Enter Your Name")
-                        .font(.system(size: 24, weight: .bold, design: .rounded))
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.8022040563)))
+                VStack(alignment: .leading) {
+                    Text("Enter Your Name").font(.custom("Open Sans", size: 24).bold()) //
                     
-                    NeumorphicStyleTextField(textField: TextField("Ex. Adam", text: $StudentName))
+                    
+                    TextField("Search...", text: $StudentName)
+                        .modifier(customViewModifier(roundedCornes: 6, startColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), endColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), textColor: .white))
+                    
+                    Text("Enter your ID").font(.custom("Open Sans", size: 24).bold()) //
+                    
+                    TextField("Search...", text: $StudentID)
+                        .modifier(customViewModifier(roundedCornes: 6, startColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), endColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), textColor: .white))
+                    
+                    Dropdown(isExpanded: $isExpanded)
+                    
                 }
                 
-                
-                VStack(alignment: .leading, spacing: 14.0) {
-                    Text("Enter Your Student ID")
-                        .font(.system(size: 24, weight: .bold, design: .rounded))                  .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7954004553)))
-                    NeumorphicStyleTextField(textField: TextField("Ex. 2519034212", text: $StudentID))
-                        .keyboardType(.decimalPad)
-
-                }
-                
-               
-                    Button(action: {}, label: {
-                        Image(systemName: "arrow.right")
-                            .font(.system(size: 16, weight: .bold, design: .rounded))
-                            .foregroundColor(Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)))
-                    })
-                    .clipShape(Circle())
-                    .frame(width: 50, height: 50)
-                    .background(Color.white)
-                    .cornerRadius(40)
-                    .opacity(StudentID.count <= 6 ? 0 : 1)
-                    .animation(.easeIn)
-
-                
-            }.padding(30.0)
+                Button(action: {
+                }, label: {
+                    Image(systemName: "arrow.right")
+                        .font(.system(size: 16, weight: .bold, design: .rounded))
+                        .foregroundColor(Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)))
+                })
+                .clipShape(Circle())
+                .frame(width: 50, height: 50)
+                .background(Color.white)
+                .cornerRadius(40)
+                .opacity(StudentID.count <= 6 ? 0 : 1)
+                .animation(.easeIn)
+            }.padding(20.0) //
         }
     }
 }
 
-struct NeumorphicStyleTextField: View {
-    var textField: TextField<Text>
+struct Dropdown: View {
+    
+    @Binding var isExpanded: Bool
+    @State var selectedOption = 1
+    
     var body: some View {
-        textField
-            .font(.system(size: 18, weight: .medium, design: .rounded))
-            .padding()
+        VStack(alignment: .leading) {
+            
+            Text("Number of lines")
+                .font(.custom("Open Sans", size: 24).bold()) //
+            DisclosureGroup("\(selectedOption)", isExpanded: $isExpanded) {
+                ScrollView(showsIndicators: false) {
+                    VStack{
+                        ForEach(1...500, id: \.self){ option in
+                            Text("\(option)")
+                                .font(.title3)
+                                .padding(.all)
+                                .onTapGesture {
+                                    self.selectedOption = option
+                                    isExpanded = false
+                                }
+                        }
+                    }
+                }.frame(height: 150)
+            }
+            .accentColor(.white)
+            .font(.title2)
             .foregroundColor(.white)
-            .background(Color.background)
+            .padding(.all)
+            .background(Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)))
             .cornerRadius(6)
-            .shadow(color: Color.darkShadow, radius: 3, x: 2, y: 2)
-            .shadow(color: Color.lightShadow, radius: 3, x: -2, y: -2)
+            .shadow(radius: 10)
+
+            
+        }
     }
 }
+
+
+struct customViewModifier: ViewModifier {
+    var roundedCornes: CGFloat
+    var startColor: Color
+    var endColor: Color
+    var textColor: Color
+    
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .background(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing))
+            .cornerRadius(roundedCornes)
+            .padding(3)
+            .foregroundColor(textColor)
+            .font(.custom("Open Sans", size: 18))
+            .shadow(radius: 10)
+    }
+}
+
 
 struct PrimaryView_Previews: PreviewProvider {
     static var previews: some View {

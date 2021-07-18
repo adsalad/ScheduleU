@@ -36,7 +36,10 @@ class CourseArray : ObservableObject {
             studentArray[index1].addTask(course: array[index])
             
         }
-        //history courses before moving on
+        //add history courses before moving on
+        //retest
+        //understand purpose of this function
+        //understand if we can just find course based on name and major type
 
         
         print(studentArray[index1].allRequired)

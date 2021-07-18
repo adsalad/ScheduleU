@@ -13,7 +13,8 @@ import SwiftUI
 struct ScheduleUApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(showProfile: .constant(false))
+            //ContentView(showProfile: .constant(false))
+            PrimaryView()
         }
     
 }
