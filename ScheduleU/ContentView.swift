@@ -26,12 +26,10 @@ struct ContentView: View {
             ZStack {
                 
                 LinearGradient(
-                  gradient: Gradient(colors: [.white, Color(#colorLiteral(red: 0.7725490196, green: 0.7960784314, blue: 0.831372549, alpha: 1))]),
-                  startPoint: UnitPoint(x: 0.2, y: 0.2),
-                  endPoint: .bottomTrailing
-                )
-                    .ignoresSafeArea()
-                //.blur(radius: 8.0)
+                    gradient: Gradient(colors: [Color(#colorLiteral(red: 0.9262614846, green: 0.9874219298, blue: 0.9875462651, alpha: 1)), Color(#colorLiteral(red: 0.8235294118, green: 0.8549019608, blue: 0.8980392157, alpha: 1))]),
+                    startPoint: UnitPoint(x: 0.2, y: 0.2),
+                    endPoint: .bottomTrailing
+                ).ignoresSafeArea()
                 
                 VStack(alignment: .leading) {
                     

@@ -23,7 +23,7 @@ class CourseArray : ObservableObject {
     init () {
         var studentArray : [Student] = []
 
-        let catalogueOne = Catalogue(Department: "Department of Science", MajorSpecMin: "Major", Degree: "CS", TotalCreditCount: 6.0, RequiredCourses: ["CS2214", "CS1027", "CS1000"], RequiredCourseDescription: "You need 3.0 courses in")
+        let catalogueOne = Catalogue(Department: "Department of Science", MajorSpecMin: "Major", Degree: "Computer Science", TotalCreditCount: 6.0, RequiredCourses: ["CS2214", "CS1027", "CS1000"], RequiredCourseDescription: "You need 3.0 courses in")
         let catalogueTwo = Catalogue(Department: "Department of History", MajorSpecMin: "Minor", Degree: "World History", TotalCreditCount: 2.0, RequiredCourses: ["HIST1023", "HIST9012", "PHIL1000"], RequiredCourseDescription: "You need 2.0 courses in")
         let studentOne = Student(id: 251035776, StudentName: "Adam Salaymeh", Primary: catalogueOne, Secondary: catalogueTwo, allRequired: [])
         studentArray.append(studentOne)
@@ -36,10 +36,11 @@ class CourseArray : ObservableObject {
             studentArray[index1].addTask(course: array[index])
             
         }
-        //add history courses before moving on
-        //retest
-        //understand purpose of this function
-        //understand if we can just find course based on name and major type
+        //https://westerncalendar.uwo.ca/Modules.cfm?ModuleID=21112&SelectedCalendar=Live&ArchiveID= catalogue
+        //https://westerncalendar.uwo.ca/Courses.cfm?CourseAcadCalendarID=MAIN_006440_1&SelectedCalendar=Live&ArchiveID= courses
+        
+        
+        //what we do is provide it with degree and major, it will pull out the correct catalogue, we add that catalogue to student array, then we loop through required courses in both catalogies (primary and secondary) and add requiredCourses. This is will then be used for crosscheck
 
         
         print(studentArray[index1].allRequired)
