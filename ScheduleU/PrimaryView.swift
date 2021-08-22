@@ -9,14 +9,19 @@ import SwiftUI
 import CoreMotion
 
 struct PrimaryView: View {
-    @State private var firstExpanded = false
-    @State private var secondExpanded = false
+    @State private var firstDropdownExpanded = false
+    @State private var secondDropdownExpanded = false
+    @State var firstDropdownArray = ["Computer Science, Major", "History, Major"]
+    @State var secondDropdownArray = ["Computer Science, Minor", "History, Minor"]
     @State private var firstOptionString = ""
     @State private var secondOptionString = ""
-    @State var StudentName = ""
-    @State var StudentID = ""
-        
+    @State var studentName = ""
+    @State var studentID = ""
     
+    @ObservedObject var studentArray = StudentArray()
+    let catalogueArray : [Catalogue] = Bundle.main.decode("Catalogue.json")
+
+        
     var body: some View {
         ZStack {
             
@@ -27,7 +32,7 @@ struct PrimaryView: View {
                 endPoint: .bottomTrailing
             ).ignoresSafeArea()
             
-            VStack(spacing: 10) {
+            VStack(spacing: 15) {
                 
                 //Title
                 Text("ScheduleU").font(.custom("Helvetica", size: 64)) //
@@ -36,22 +41,28 @@ struct PrimaryView: View {
                     .foregroundColor(Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)))
                 
                 //Textboxes & Dropdown & Button
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 12.0) {
                     
                     Text("Enter Your Name").font(.custom("Open Sans", size: 24).bold()) //
-                    TextField("", text: $StudentName)
+                    TextField("", text: $studentName)
                         .modifier(customTextModifier(roundedCornes: 6, startColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), endColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), textColor: .white))
                     
                     Text("Enter your ID").font(.custom("Open Sans", size: 24).bold()) //
-                    TextField("", text: $StudentID)
+                    TextField("", text: $studentID)
                         .modifier(customTextModifier(roundedCornes: 6, startColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), endColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), textColor: .white))
                         
                 
-                    Dropdown(title: "Choose Primary Study", isExpanded: $firstExpanded, selectedOption: $firstOptionString)
+                    Dropdown(title: "Choose Primary Study", isExpanded: $firstDropdownExpanded, selectedOption: $firstOptionString, optionArray: $firstDropdownArray)
                     
-                    Dropdown(title: "Choose Seconday Study", isExpanded: $secondExpanded, selectedOption: $secondOptionString)
+                    Dropdown(title: "Choose Seconday Study", isExpanded: $secondDropdownExpanded, selectedOption: $secondOptionString, optionArray: $secondDropdownArray)
                 }
+                .padding(.top, 5.0)
                 Button(action: {
+                    //turn this into an extension
+                    let firstOptionArray = firstOptionString.components(separatedBy: ", ")
+                    let secondOptionArray = secondOptionString.components(separatedBy: ", ")
+                    favoriteAlbum(catalogueArray: catalogueArray, studentArray: &studentArray.array, firstOptionArray: firstOptionArray, secondOptionArray: secondOptionArray, studentID: studentID, studentName: studentName)
+                    
                 }, label: {
                     Image(systemName: "arrow.right")
                         .font(.system(size: 16, weight: .bold, design: .rounded))
@@ -69,13 +80,21 @@ struct PrimaryView: View {
     }
 }
 
+func favoriteAlbum(catalogueArray : [Catalogue], studentArray: inout [Student] , firstOptionArray : [String], secondOptionArray : [String], studentID : String, studentName : String ) {
+    
+    let major = catalogueArray.firstIndex(where: {$0.Degree == firstOptionArray[0] && $0.MajorSpecMin == firstOptionArray[1]})
+    let minor = catalogueArray.firstIndex(where: {$0.Degree == secondOptionArray[0] && $0.MajorSpecMin == secondOptionArray[1]})
+    let studentOne = Student(id: Int(studentID) ?? 0, StudentName: studentName, Primary: catalogueArray[major ?? 0], Secondary: catalogueArray[minor ?? 0], allRequired: [])
+    studentArray.append(studentOne)
+}
+
 struct Dropdown: View {
     var title: String
     @Binding var isExpanded: Bool
     @Binding var selectedOption : String
     
     //Convert this to dynamic array through JSON or CoreData, this is a sample for now to make sure things work
-    var optionArray = ["Computer Science, Major", "History, Major"]
+    @Binding var optionArray : [String]
     
     
     
@@ -91,9 +110,7 @@ struct Dropdown: View {
                                 .padding(.all)
                                 .onTapGesture {
                                     self.selectedOption = option
-                                    isExpanded = false
-                                    let option = option.components(separatedBy: ", ")
-                                    print(option)
+                                    isExpanded.toggle()
                                 }
                     }
                 }.frame(height: 150)

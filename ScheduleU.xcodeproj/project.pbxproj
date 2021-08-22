@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		475C7927267FDE38004785E2 /* PrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C7926267FDE38004785E2 /* PrimaryView.swift */; };
-		475C792926812D70004785E2 /* SecondaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C792826812D70004785E2 /* SecondaryView.swift */; };
 		4777DE8926378F820066C3F4 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4777DE8826378F820066C3F4 /* Bundle-Decodable.swift */; };
 		4777DE9326378FE50066C3F4 /* Catalogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4777DE9226378FE50066C3F4 /* Catalogue.swift */; };
 		4777DE982637918C0066C3F4 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4777DE972637918C0066C3F4 /* Course.swift */; };
@@ -44,7 +43,6 @@
 
 /* Begin PBXFileReference section */
 		475C7926267FDE38004785E2 /* PrimaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryView.swift; sourceTree = "<group>"; };
-		475C792826812D70004785E2 /* SecondaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryView.swift; sourceTree = "<group>"; };
 		4777DE8826378F820066C3F4 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		4777DE9226378FE50066C3F4 /* Catalogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalogue.swift; sourceTree = "<group>"; };
 		4777DE972637918C0066C3F4 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 				47CDE79026378AB200141B66 /* ContentView.swift */,
 				47CDE7BC26378B2700141B66 /* NewView.swift */,
 				475C7926267FDE38004785E2 /* PrimaryView.swift */,
-				475C792826812D70004785E2 /* SecondaryView.swift */,
 				4788B96F265CC7160038F815 /* InfoView.swift */,
 				4777DE972637918C0066C3F4 /* Course.swift */,
 				478D9B30264CB49F0049D141 /* Student.swift */,
@@ -298,7 +295,6 @@
 				47CDE79126378AB200141B66 /* ContentView.swift in Sources */,
 				47CDE78F26378AB200141B66 /* ScheduleUApp.swift in Sources */,
 				4777DE8926378F820066C3F4 /* Bundle-Decodable.swift in Sources */,
-				475C792926812D70004785E2 /* SecondaryView.swift in Sources */,
 				478D9B31264CB49F0049D141 /* Student.swift in Sources */,
 				4777DE9326378FE50066C3F4 /* Catalogue.swift in Sources */,
 			);

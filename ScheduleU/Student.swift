@@ -19,3 +19,8 @@ struct Student : Identifiable {
     }
     
 }
+
+class StudentArray : ObservableObject {
+    @Published var array : [Student] = []
+}
+

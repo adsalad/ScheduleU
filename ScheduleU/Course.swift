@@ -47,10 +47,6 @@ class CourseArray : ObservableObject {
 
     }
     @Published var array : [Course] = Bundle.main.decode("Courses.json")
-    
-   
-
-    
 }
 
 class WorksheetArray : ObservableObject {

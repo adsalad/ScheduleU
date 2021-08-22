@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-     
-    
     
     @ObservedObject var courseArray = CourseArray()
     @ObservedObject var worksheetArray = WorksheetArray()
@@ -69,8 +67,8 @@ struct ContentView: View {
                                 //}.buttonStyle(PlainButtonStyle())
                             }
                         }
-                        .navigationBarItems(leading: AddButton(isTrue: $isTrue), trailing: AvatarView(showProfile: $showProfile)
-                        )
+                        .navigationBarItems(leading: AddButton(isTrue: $isTrue))
+                        
                     }
                 }
             }
@@ -100,16 +98,16 @@ struct AddButton: View {
     }
 }
 
-struct AvatarView: View {
-    
-    @Binding var showProfile : Bool
-    
-    var body: some View {
-        Button(action: {self.showProfile.toggle()}) {
-            Image("Avatar")
-                .resizable()
-                .frame(width: 36, height: 36)
-                .clipShape(Circle())
-        }
-    }
-}
+//struct AvatarView: View {
+//
+//    @Binding var showProfile : Bool
+//
+//    var body: some View {
+//        Button(action: {self.showProfile.toggle()}) {
+//            Image("Avatar")
+//                .resizable()
+//                .frame(width: 36, height: 36)
+//                .clipShape(Circle())
+//        }
+//    }
+//}

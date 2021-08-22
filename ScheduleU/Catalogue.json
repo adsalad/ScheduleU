@@ -1,14 +1,35 @@
 [
+    {
+      "Department": "N/A",
+      "MajorSpecMin": "N/A",
+      "Degree": "N/A",
+      "TotalCreditCount": 0,
+      "RequiredCourses": [
+      ],
+      "RequiredCourseDescription": "N/A"
+    },
   {
     "Department": "Department of Science",
     "MajorSpecMin": "Major",
     "Degree": "Computer Science",
-    "TotalCreditCount": 6,
+    "TotalCreditCount": 12,
     "RequiredCourses": [
       "CS2214",
       "CS1000",
       "CS1027"
     ],
     "RequiredCourseDescription": "You need 3.0 Courses in \n CS2214"
+  },
+  {
+    "Department": "Department of History",
+    "MajorSpecMin": "Minor",
+    "Degree": "History",
+    "TotalCreditCount": 6,
+    "RequiredCourses": [
+      "HIST1200",
+      "HIST4200",
+      "HIST3000"
+    ],
+    "RequiredCourseDescription": "You need 3.0 Courses in \n History"
   }
 ]

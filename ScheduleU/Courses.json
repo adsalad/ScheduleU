@@ -1,53 +1,103 @@
 [
-   {
-      "id":1,
-      "Name":"COMPUTER SCIENCE FUNDAMENTALS II",
-      "Code":"CS1027",
-      "Description":"First year cs course",
-      "Credit":0.5,
-      "Antirequisites":[
-      ],
-      "Prerequisites":[
-         
-      ]
-   },
-   {
-      "id":2,
-      "Name":"COMPUTER SCIENCE FUNDAMENTALS III",
-      "Code":"CS2214",
-      "Description":"Second Year CS Course",
-      "Credit":0.5,
-      "Antirequisites":[
-         
-      ],
-      "Prerequisites":[
-         
-      ]
-   },
-   {
-      "id":3,
-      "Name":"ANALYSIS OF INDETERMINATE STRUCTURES II",
-      "Code":"CS1000",
-      "Description":"Random Course testing",
-      "Credit":0.5,
-      "Antirequisites":[
-         "CS2214"
-      ],
-      "Prerequisites":[
-         
-      ]
-   },
-   {
-      "id":4,
-      "Name":"ORIGIN AND GEOLOGY OF THE SOLAR SYSTEM",
-      "Code":"ES1086",
-      "Description":"This is a really boring course",
-      "Credit":1.0,
-      "Antirequisites":[
-         "CS1000"
-      ],
-      "Prerequisites":[
-         
-      ]
-   }
+    {
+        "id":0,
+        "Name":"N/A",
+        "Code":"N/A",
+        "Description":"N/A",
+        "Credit":0.0,
+        "Antirequisites":[
+        ],
+        "Prerequisites":[
+            
+        ]
+    },
+    {
+        "id":1,
+        "Name":"COMPUTER SCIENCE FUNDAMENTALS II",
+        "Code":"CS1027",
+        "Description":"First year cs course",
+        "Credit":0.5,
+        "Antirequisites":[
+        ],
+        "Prerequisites":[
+            
+        ]
+    },
+    {
+        "id":2,
+        "Name":"COMPUTER SCIENCE FUNDAMENTALS III",
+        "Code":"CS2214",
+        "Description":"Second Year CS Course",
+        "Credit":0.5,
+        "Antirequisites":[
+            
+        ],
+        "Prerequisites":[
+            
+        ]
+    },
+    {
+        "id":3,
+        "Name":"ANALYSIS OF INDETERMINATE STRUCTURES II",
+        "Code":"CS1000",
+        "Description":"Random Course testing",
+        "Credit":0.5,
+        "Antirequisites":[
+            "CS2214"
+        ],
+        "Prerequisites":[
+            
+        ]
+    },
+    {
+        "id":4,
+        "Name":"ORIGIN AND GEOLOGY OF THE SOLAR SYSTEM",
+        "Code":"ES1086",
+        "Description":"This is a really boring course",
+        "Credit":1.0,
+        "Antirequisites":[
+            "CS1000"
+        ],
+        "Prerequisites":[
+            
+        ]
+    },
+    {
+        "id":5,
+        "Name":"INTRO TO AMERICAN HISTORY",
+        "Code":"HIST1200",
+        "Description":"This is a really boring HISTORY course",
+        "Credit":1.0,
+        "Antirequisites":[
+            "CS1000"
+        ],
+        "Prerequisites":[
+            
+        ]
+    },
+    {
+        "id":6,
+        "Name":"CIVIL WAR",
+        "Code":"HIST4200",
+        "Description":"This is a really FUN course",
+        "Credit":1.0,
+        "Antirequisites":[
+        ],
+        "Prerequisites":[
+            "HIST1200"
+        ]
+    },
+    {
+        "id":7,
+        "Name":"ORIGINS OF EGYPTIAN ARTIFACTS",
+        "Code":"HIST3000",
+        "Description":"This is a really DECENT course",
+        "Credit":1.0,
+        "Antirequisites":[
+            
+        ],
+        "Prerequisites":[
+            
+        ]
+    }
 ]
