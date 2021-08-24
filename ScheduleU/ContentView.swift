@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    let catalogueArray : [Catalogue] = Bundle.main.decode("Catalogue.json")
     @ObservedObject var courseArray = CourseArray()
     @ObservedObject var worksheetArray = WorksheetArray()
-    let catalogueArray : [Catalogue] = Bundle.main.decode("Catalogue.json")
     @Binding var showProfile : Bool
     @State var isTrue = false
     

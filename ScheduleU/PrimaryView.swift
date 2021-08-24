@@ -5,11 +5,10 @@
 //  Created by Adam S on 2021-06-20.
 //
 
-//make sure there is user input
+//think of dynamic array solutions
 //fix select option thing
-//add extension file for split thing
-//refactor code
 //add required course shit for both Primary and Seconday
+//exclude same major and minor
 
 import SwiftUI
 import CoreMotion
@@ -26,8 +25,12 @@ struct PrimaryView: View {
     
     @ObservedObject var studentArray = StudentArray()
     let catalogueArray : [Catalogue] = Bundle.main.decode("Catalogue.json")
-
+    
+    var disableForm: Bool {
+        studentName.count < 2 || studentID.count < 9 || firstOptionString.isEmpty || secondOptionString.isEmpty
+    }
         
+    
     var body: some View {
         ZStack {
             
@@ -49,10 +52,10 @@ struct PrimaryView: View {
                 //Textboxes & Dropdown & Button
                 VStack(alignment: .leading, spacing: 12.0) {
                     
-                    Text("Enter Your Name").font(.custom("Open Sans", size: 24).bold()) //
-                    TextField("", text: $studentName)
-                        .modifier(customTextModifier(roundedCornes: 6, startColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), endColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), textColor: .white))
-                    
+                    Text("Enter Your Full Name").font(.custom("Open Sans", size: 24).bold()) //
+                            TextField("", text: $studentName)
+                                .modifier(customTextModifier(roundedCornes: 6, startColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), endColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), textColor: .white))
+        
                     Text("Enter your ID").font(.custom("Open Sans", size: 24).bold()) //
                     TextField("", text: $studentID)
                         .modifier(customTextModifier(roundedCornes: 6, startColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), endColor: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), textColor: .white))
@@ -63,20 +66,23 @@ struct PrimaryView: View {
                     DropdownMenu(title: "Choose Seconday Study", isExpanded: $secondDropdownExpanded, selectedOption: $secondOptionString, optionArray: $secondDropdownArray)
                 }
                 .padding(.top, 5.0)
-                Button(action: {
-                    createStudent(catalogueArray: catalogueArray, studentArray: &studentArray.array, firstOptionString: firstOptionString, secondOptionString: secondOptionString, studentID: studentID, studentName: studentName)
-                }, label: {
-                    Image(systemName: "arrow.right")
-                        .font(.system(size: 16, weight: .bold, design: .rounded))
-                        .foregroundColor(Color.white)
-                })
-                .clipShape(Circle())
-                .frame(width: 50, height: 50)
-                .background(Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)))
-                .cornerRadius(40)
-                .opacity(firstOptionString.isEmpty && secondOptionString.isEmpty ? 0 : 1)
-                .animation(.easeIn)
-                .padding(.top, 10)
+                
+                Section {
+                    Button(action: {
+                        createStudent(catalogueArray: catalogueArray, studentArray: &studentArray.array, firstOptionString: firstOptionString, secondOptionString: secondOptionString, studentID: studentID, studentName: studentName)
+                    }, label: {
+                        Image(systemName: "arrow.right")
+                            .font(.system(size: 16, weight: .bold, design: .rounded))
+                            .foregroundColor(Color.white)
+                    })
+                    .clipShape(Circle())
+                    .frame(width: 50, height: 50)
+                    .background(Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)))
+                    .cornerRadius(40)
+                    .opacity(disableForm ? 0 : 1)
+                    .animation(.easeIn)
+                    .padding(.top, 10)
+                }.disabled(disableForm)
             }.padding(20.0) //
         }
     }

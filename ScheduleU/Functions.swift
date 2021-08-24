@@ -22,4 +22,5 @@ func createStudent(catalogueArray : [Catalogue], studentArray: inout [Student] ,
     let minor = catalogueArray.firstIndex(where: {$0.Degree == secondOptionArray[0] && $0.MajorSpecMin == secondOptionArray[1]})
     let studentOne = Student(id: Int(studentID) ?? 0, StudentName: studentName, Primary: catalogueArray[major ?? 0], Secondary: catalogueArray[minor ?? 0], allRequired: [])
     studentArray.append(studentOne)
+    print(studentArray)
 }
