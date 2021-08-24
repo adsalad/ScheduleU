@@ -6,18 +6,17 @@
 //
 
 //think of dynamic array solutions
-//fix select option thing
 //add required course shit for both Primary and Seconday
-//exclude same major and minor
 
 import SwiftUI
 import CoreMotion
 
 struct PrimaryView: View {
+    @State private var alertIsPresented = false
     @State private var firstDropdownExpanded = false
     @State private var secondDropdownExpanded = false
-    @State var firstDropdownArray = ["Select Option", "Computer Science, Major", "History, Major"]
-    @State var secondDropdownArray = ["Select Option", "Computer Science, Minor", "History, Minor"]
+    @State var firstDropdownArray = ["Computer Science, Major", "History, Major"]
+    @State var secondDropdownArray = ["Computer Science, Minor", "History, Minor"]
     @State private var firstOptionString = ""
     @State private var secondOptionString = ""
     @State var studentName = ""
@@ -25,8 +24,9 @@ struct PrimaryView: View {
     
     @ObservedObject var studentArray = StudentArray()
     let catalogueArray : [Catalogue] = Bundle.main.decode("Catalogue.json")
+    let courseArray : [Course] = Bundle.main.decode("Courses.json")
     
-    var disableForm: Bool {
+    var disableButton: Bool {
         studentName.count < 2 || studentID.count < 9 || firstOptionString.isEmpty || secondOptionString.isEmpty
     }
         
@@ -63,13 +63,17 @@ struct PrimaryView: View {
                 
                     DropdownMenu(title: "Choose Primary Study", isExpanded: $firstDropdownExpanded, selectedOption: $firstOptionString, optionArray: $firstDropdownArray)
                     
-                    DropdownMenu(title: "Choose Seconday Study", isExpanded: $secondDropdownExpanded, selectedOption: $secondOptionString, optionArray: $secondDropdownArray)
+                    DropdownMenu(title: "Choose Secondary Study", isExpanded: $secondDropdownExpanded, selectedOption: $secondOptionString, optionArray: $secondDropdownArray)
                 }
                 .padding(.top, 5.0)
                 
-                Section {
+               
+                    //Button to move to next stage
                     Button(action: {
-                        createStudent(catalogueArray: catalogueArray, studentArray: &studentArray.array, firstOptionString: firstOptionString, secondOptionString: secondOptionString, studentID: studentID, studentName: studentName)
+                        createStudent(alertIsPresented: &alertIsPresented, catalogueArray: catalogueArray, studentArray: &studentArray.array, firstOptionString: firstOptionString, secondOptionString: secondOptionString, studentID: studentID, studentName: studentName)
+                        
+                        addRequiredCourses(studentArray: &studentArray.array, courseArray: courseArray)
+                        
                     }, label: {
                         Image(systemName: "arrow.right")
                             .font(.system(size: 16, weight: .bold, design: .rounded))
@@ -79,11 +83,20 @@ struct PrimaryView: View {
                     .frame(width: 50, height: 50)
                     .background(Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)))
                     .cornerRadius(40)
-                    .opacity(disableForm ? 0 : 1)
+                    .opacity(disableButton ? 0 : 1)
                     .animation(.easeIn)
                     .padding(.top, 10)
-                }.disabled(disableForm)
-            }.padding(20.0) //
+    
+            }.padding(20.0)
+            
+            //alert recieved boolean from createStudent function
+            .alert(isPresented: $alertIsPresented, content: {
+                Alert(
+                    title: Text("Incorrect Program Selection!"),
+                    message: Text("You cannot have the same program as both your Major, Specialization, or Minor"),
+                    dismissButton: .default(Text("Got it!"))
+                )
+            })
         }
     }
 }
