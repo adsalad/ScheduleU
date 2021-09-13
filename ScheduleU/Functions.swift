@@ -18,6 +18,7 @@ func createStudent(alertIsPresented : inout Bool, catalogueArray : [Catalogue], 
     let firstOptionArray = firstOptionString.splitByComma
     let secondOptionArray = secondOptionString.splitByComma
     
+    //send alert
     if firstOptionArray[0] == secondOptionArray[0] {
         alertIsPresented = true
     }
@@ -30,8 +31,8 @@ func createStudent(alertIsPresented : inout Bool, catalogueArray : [Catalogue], 
 
 
 //maybe this can be refactored?
-func addRequiredCourses (studentArray: inout [Student], courseArray: [Course]) {
-    let index1 : Int = studentArray.firstIndex(where: {$0.id == 251035776})!
+func addRequiredCourses (studentID : String, studentArray: inout [Student], courseArray: [Course]) {
+    let index1 : Int = studentArray.firstIndex(where: {$0.id == Int(studentID)})!
 
     for item in studentArray[index1].Primary.RequiredCourses {
         let name = item
@@ -43,7 +44,6 @@ func addRequiredCourses (studentArray: inout [Student], courseArray: [Course]) {
         let name = item
         let index = courseArray.firstIndex(where: {$0.Code == name})!
         studentArray[index1].addTask(course: courseArray[index])
-        
     }
     print(studentArray[index1].allRequired)
 }

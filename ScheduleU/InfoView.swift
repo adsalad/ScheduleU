@@ -24,6 +24,10 @@ struct InfoView: View {
                 Text("Add")
             }
             Text("\(course.Name)")
+            Text("\(course.Code)")
+            Text("\(course.Description)")
+            Text("\(course.Credit)")
+            Text("\(course.AntiRequisites[0])")
         }
     }
 }

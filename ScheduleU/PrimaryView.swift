@@ -72,7 +72,7 @@ struct PrimaryView: View {
                     Button(action: {
                         createStudent(alertIsPresented: &alertIsPresented, catalogueArray: catalogueArray, studentArray: &studentArray.array, firstOptionString: firstOptionString, secondOptionString: secondOptionString, studentID: studentID, studentName: studentName)
                         
-                        addRequiredCourses(studentArray: &studentArray.array, courseArray: courseArray)
+                        addRequiredCourses(studentID: studentID, studentArray: &studentArray.array, courseArray: courseArray)
                         
                     }, label: {
                         Image(systemName: "arrow.right")
